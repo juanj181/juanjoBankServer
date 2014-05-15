@@ -126,36 +126,40 @@ public class EntidadBancariaController {
     public void update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada, @PathVariable("idEntidadBancaria") int idEntidadBancaria) {
         try {
 
-            EntidadBancariaDAO entidadBancaria = new EntidadBancariaDAO();
-            entidadBancaria.get(idEntidadBancaria);
+            EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
+            EntidadBancaria entidadBancariaLeida = entidadBancariaDAO.get(idEntidadBancaria);
 
             ObjectMapper objectMapper = new ObjectMapper();
             EntidadBancaria entidadBancariaUpdate = (EntidadBancaria) objectMapper.readValue(jsonEntrada, EntidadBancaria.class);
 
-            entidadBancaria.setCodigoEntidadBancaria(entidadBancariaUpdate.getCodigoEntidadBancaria());
-            entidadBancaria.setNombre(entidadBancariaUpdate.getNombre());
-            entidadBancaria.setTipoEntidadBancaria(entidadBancariaUpdate.getTipoEntidadBancaria());
+            entidadBancariaLeida.setCodigoEntidadBancaria(entidadBancariaUpdate.getCodigoEntidadBancaria());
+            entidadBancariaLeida.setNombre(entidadBancariaUpdate.getNombre());
+            entidadBancariaLeida.setTipoEntidadBancaria(entidadBancariaUpdate.getTipoEntidadBancaria());
 
-            entidadBancaria.saveOrUpdate(entidadBancaria);
+            entidadBancariaDAO.saveOrUpdate(entidadBancariaLeida);
             httpServletResponse.setContentType("application/json; charset=UTF-8");
             httpServletResponse.setStatus(httpServletResponse.SC_OK);
 
-            String jsonSalida = objectMapper.writeValueAsString(entidadBancaria);
+            String jsonSalida = objectMapper.writeValueAsString(entidadBancariaLeida);
             httpServletResponse.getWriter().println(jsonSalida);
         } catch (Exception ex) {
             try {
                 ex.printStackTrace(httpServletResponse.getWriter());
+            } catch (IOException ex1) {
+                Logger.getLogger(EntidadBancariaController.class.getName()).log(Level.SEVERE, null, ex1);
             }
         }
     }
 
-    @RequestMapping(value = {"/EntidadBancaria"}, method = RequestMethod.GET)
+ /*   @RequestMapping(value = {"/EntidadBancaria"}, method = RequestMethod.GET)
     public void find(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         try {
+            EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
+
             List<EntidadBancaria> entidadesBancarias;
             String nombre = httpServletRequest.getParameter("nombre");
             if (nombre != null) {
-                entidadesBancarias = entidadBancariaDAO.findByNombre(nombre);
+              //  entidadesBancarias = entidadBancariaDAO.findByNombre(nombre);
             } else {
                 entidadesBancarias = entidadBancariaDAO.findAll();
             }
@@ -174,5 +178,5 @@ public class EntidadBancariaController {
             } catch (IOException ex1) {
             }
         }
-    }
+    } */
 }

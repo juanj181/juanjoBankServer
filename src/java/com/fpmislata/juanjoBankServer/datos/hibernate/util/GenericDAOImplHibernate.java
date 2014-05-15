@@ -235,7 +235,7 @@ public class GenericDAOImplHibernate<T, ID extends Serializable> implements Gene
             throw new RuntimeException(ex);
         }
     }
-
+        
     private Class<T> getEntityClass() {
         return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
