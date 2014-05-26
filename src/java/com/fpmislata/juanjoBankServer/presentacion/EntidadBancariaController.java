@@ -4,13 +4,16 @@
  */
 package com.fpmislata.juanjoBankServer.presentacion;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fpmislata.juanjoBankServer.datos.BussinessException;
 import com.fpmislata.juanjoBankServer.datos.dao.EntidadBancariaDAO;
 import com.fpmislata.juanjoBankServer.datos.hibernate.dao.EntidadBancariaDAOImplHibernate;
 import com.fpmislata.juanjoBankServer.datos.hibernate.util.HibernateUtil;
 import com.fpmislata.juanjoBankServer.negocio.EntidadBancaria;
 import com.fpmislata.juanjoBankServer.negocio.TipoEntidadBancaria;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -151,32 +154,22 @@ public class EntidadBancariaController {
         }
     }
 
- /*   @RequestMapping(value = {"/EntidadBancaria"}, method = RequestMethod.GET)
-    public void find(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+    @RequestMapping(value = {"/EntidadBancaria"}, method = RequestMethod.GET)
+    public void findAll(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws BussinessException, IOException {
         try {
             EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
+            List<EntidadBancaria> entidadesBancarias=entidadBancariaDAO.findAll();
 
-            List<EntidadBancaria> entidadesBancarias;
-            String nombre = httpServletRequest.getParameter("nombre");
-            if (nombre != null) {
-              //  entidadesBancarias = entidadBancariaDAO.findByNombre(nombre);
-            } else {
-                entidadesBancarias = entidadBancariaDAO.findAll();
-            }
 
-            httpServletResponse.setContentType("application/json; charset=UTF-8");
-            httpServletResponse.setStatus(httpServletResponse.SC_OK);
             ObjectMapper objectMapper = new ObjectMapper();
-            String json = objectMapper.writeValueAsString(entidadesBancarias);
-            httpServletResponse.getWriter().println(json);
-        } catch (Exception ex) {
-            httpServletResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            String jsonSalida = objectMapper.writeValueAsString(entidadesBancarias);
 
-            httpServletResponse.setContentType("text/plain; charset=UTF-8");
-            try {
-                ex.printStackTrace(httpServletResponse.getWriter());
-            } catch (IOException ex1) {
-            }
+            httpServletResponse.setStatus(httpServletResponse.SC_OK);
+            httpServletResponse.setContentType("application/json; charset = UTF-8");
+
+            httpServletResponse.getWriter().println(jsonSalida);
+        } catch (JsonProcessingException ex) {
+            Logger.getLogger(EntidadBancariaController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } */
+    }
 }

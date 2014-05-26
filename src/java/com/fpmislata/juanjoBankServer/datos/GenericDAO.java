@@ -13,5 +13,5 @@ public interface GenericDAO<T, ID extends Serializable> {
 
     void delete(ID id) throws BussinessException;
 
-    //List<T> findAll() throws BussinessException;
+    List<T> findAll() throws BussinessException;
 }
