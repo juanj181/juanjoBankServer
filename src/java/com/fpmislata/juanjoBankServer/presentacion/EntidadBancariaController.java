@@ -43,7 +43,6 @@ public class EntidadBancariaController {
             EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
             EntidadBancaria entidadBancaria = entidadBancariaDAO.get(idEntidadBancaria);
 
-            //String json="{ idEntidadBancaria:" +entidadBancaria.getIdEntidadBancaria()  + ",nombre:\"" + entidadBancaria.getNombre() + "\"}";
             ObjectMapper objectMapper = new ObjectMapper();
 
             String json = objectMapper.writeValueAsString(entidadBancaria);
@@ -79,11 +78,6 @@ public class EntidadBancariaController {
             } else {
                 httpServletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
             }
-
-
-
-
-            //   httpServletResponse.setContentType("application/json; charset=UTF-8");
 
 
         } catch (Exception ex) {
