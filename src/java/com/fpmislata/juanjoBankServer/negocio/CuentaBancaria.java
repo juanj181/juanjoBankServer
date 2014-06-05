@@ -4,6 +4,8 @@
  */
 package com.fpmislata.juanjoBankServer.negocio;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Jj
@@ -13,11 +15,13 @@ public class CuentaBancaria {
     private int idCuentaBancaria;
     private String nombre;
     private String codigoCuentaBancaria;
+    private BigDecimal saldo;
     
-    public CuentaBancaria (int idCuentaBancaria, String nombre, String codigoCuentaBancaria){
+    public CuentaBancaria (int idCuentaBancaria, String nombre, String codigoCuentaBancaria, BigDecimal saldo){
         this.idCuentaBancaria = idCuentaBancaria;
         this.nombre = nombre;
         this.codigoCuentaBancaria = codigoCuentaBancaria;
+        this.saldo = saldo;
     }
     
     public CuentaBancaria(){
@@ -64,5 +68,13 @@ public class CuentaBancaria {
      */
     public void setCodigoCuentaBancaria(String codigoCuentaBancaria) {
         this.codigoCuentaBancaria = codigoCuentaBancaria;
+    }
+    
+    public BigDecimal getSaldo(){
+        return saldo;
+    }
+    
+    public void setSaldo(BigDecimal saldo){
+        this.saldo = saldo;
     }
 }

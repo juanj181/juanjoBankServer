@@ -34,17 +34,14 @@ public class EntidadBancariaController {
 
     //@Autowired
     //EntidadBancariaDAO entidadBancariaDAO;
-    @RequestMapping(value = {"/EntidadBancaria/{idEntidadBancaria}"}, method = RequestMethod.GET, consumes = "application/json")
+    @RequestMapping(value = {"/EntidadBancaria/{idEntidadBancaria}"}, method = RequestMethod.GET)
     public void get(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @PathVariable("idEntidadBancaria") int idEntidadBancaria) {
         try {
-            if (idEntidadBancaria == 3) {
-                throw new RuntimeException("El numero no puede ser 3");
-            }
+       
             EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
             EntidadBancaria entidadBancaria = entidadBancariaDAO.get(idEntidadBancaria);
 
             ObjectMapper objectMapper = new ObjectMapper();
-
             String json = objectMapper.writeValueAsString(entidadBancaria);
 
             httpServletResponse.getWriter().println(json);
@@ -65,9 +62,7 @@ public class EntidadBancariaController {
     @RequestMapping(value = {"/EntidadBancaria/{idEntidadBancaria}"}, method = RequestMethod.DELETE)
     public void delete(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @PathVariable("idEntidadBancaria") int idEntidadBancaria) {
         try {
-            if (idEntidadBancaria == 3) {
-                throw new RuntimeException("El numero no puede ser 3");
-            }
+         
             EntidadBancariaDAO entidadBancariaDAO = new EntidadBancariaDAOImplHibernate();
             EntidadBancaria entidadBancaria = entidadBancariaDAO.get(idEntidadBancaria);
 
@@ -91,7 +86,7 @@ public class EntidadBancariaController {
         }
     }
 
-    @RequestMapping(value = {"/EntidadBancaria"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/EntidadBancaria"}, method = RequestMethod.POST,consumes="application/json")
     public void save(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) {
         try {
 
@@ -119,7 +114,7 @@ public class EntidadBancariaController {
         }
     }
 
-    @RequestMapping(value = {"/EntidadBancaria/{idEntidadBancaria}"}, method = RequestMethod.PUT)
+    @RequestMapping(value = {"/EntidadBancaria/{idEntidadBancaria}"}, method = RequestMethod.PUT,consumes="application/json")
     public void update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada, @PathVariable("idEntidadBancaria") int idEntidadBancaria) {
         try {
 
