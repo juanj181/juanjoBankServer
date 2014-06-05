@@ -4,17 +4,11 @@
  */
 package com.fpmislata.juanjoBankServer.presentacion;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fpmislata.juanjoBankServer.datos.BussinessException;
 import com.fpmislata.juanjoBankServer.datos.dao.CuentaBancariaDAO;
-import com.fpmislata.juanjoBankServer.datos.dao.EntidadBancariaDAO;
 import com.fpmislata.juanjoBankServer.datos.hibernate.dao.CuentaBancariaDAOImplHibernate;
-import com.fpmislata.juanjoBankServer.datos.hibernate.dao.EntidadBancariaDAOImplHibernate;
 import com.fpmislata.juanjoBankServer.negocio.CuentaBancaria;
-import com.fpmislata.juanjoBankServer.negocio.EntidadBancaria;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -123,9 +117,13 @@ public class CuentaBancariaController {
             ObjectMapper objectMapper = new ObjectMapper();
             CuentaBancaria cuentaBancariaUpdate = (CuentaBancaria) objectMapper.readValue(jsonEntrada, CuentaBancaria.class);
 
-            cuentaBancariaLeida.setCodigoCuentaBancaria(cuentaBancariaUpdate.getCodigoCuentaBancaria());
-            cuentaBancariaLeida.setNombre(cuentaBancariaUpdate.getNombre());
+            cuentaBancariaLeida.setSucursalBancaria(cuentaBancariaUpdate.getSucursalBancaria());
+            cuentaBancariaLeida.setNumeroCuenta(cuentaBancariaUpdate.getNumeroCuenta());
+            cuentaBancariaLeida.setDc(cuentaBancariaUpdate.getDc());
             cuentaBancariaLeida.setSaldo(cuentaBancariaUpdate.getSaldo());
+            cuentaBancariaLeida.setCif(cuentaBancariaUpdate.getCif());
+
+
 
             cuentaBancariaDAO.saveOrUpdate(cuentaBancariaLeida);
             httpServletResponse.setContentType("application/json; charset=UTF-8");
@@ -142,8 +140,6 @@ public class CuentaBancariaController {
         }
     }
 
-
-
     @RequestMapping(value = {"/CuentaBancaria"}, method = RequestMethod.GET)
     public void findAll(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         try {
@@ -159,9 +155,9 @@ public class CuentaBancariaController {
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
             httpServletResponse.setContentType("application/json; charset=UTF-8");
 
-         
-         
-            
+
+
+
 
 
         } catch (Exception ex) {

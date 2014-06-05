@@ -5,27 +5,33 @@
 package com.fpmislata.juanjoBankServer.negocio;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Jj
  */
 public class CuentaBancaria {
-    
+
     private int idCuentaBancaria;
-    private String nombre;
-    private String codigoCuentaBancaria;
+    private SucursalBancaria sucursalBancaria;
+    private String numeroCuenta;
+    private String dc;
+    private String cif;
     private BigDecimal saldo;
-    
-    public CuentaBancaria (int idCuentaBancaria, String nombre, String codigoCuentaBancaria, BigDecimal saldo){
+    private List<MovimientoBancario> listaMovimiento = new ArrayList<>();
+
+    public CuentaBancaria(int idCuentaBancaria,  SucursalBancaria sucursalBancaria, String numeroCuenta, String dc, String cif, BigDecimal saldo) {
         this.idCuentaBancaria = idCuentaBancaria;
-        this.nombre = nombre;
-        this.codigoCuentaBancaria = codigoCuentaBancaria;
+        this.numeroCuenta = numeroCuenta;
+        this.sucursalBancaria = sucursalBancaria;
+        this.dc = dc;
+        this.cif = cif;
         this.saldo = saldo;
     }
-    
-    public CuentaBancaria(){
-        
+
+    public CuentaBancaria() {
     }
 
     /**
@@ -43,38 +49,88 @@ public class CuentaBancaria {
     }
 
     /**
-     * @return the nombre
+     * @return the sucursalBancaria
      */
-    public String getNombre() {
-        return nombre;
+    public SucursalBancaria getSucursalBancaria() {
+        return sucursalBancaria;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param sucursalBancaria the sucursalBancaria to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setSucursalBancaria(SucursalBancaria sucursalBancaria) {
+        this.sucursalBancaria = sucursalBancaria;
     }
 
     /**
-     * @return the codigoCuentaBancaria
+     * @return the numeroCuenta
      */
-    public String getCodigoCuentaBancaria() {
-        return codigoCuentaBancaria;
+    public String getNumeroCuenta() {
+        return numeroCuenta;
     }
 
     /**
-     * @param codigoCuentaBancaria the codigoCuentaBancaria to set
+     * @param numeroCuenta the numeroCuenta to set
      */
-    public void setCodigoCuentaBancaria(String codigoCuentaBancaria) {
-        this.codigoCuentaBancaria = codigoCuentaBancaria;
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
     }
-    
-    public BigDecimal getSaldo(){
+
+    /**
+     * @return the dc
+     */
+    public String getDc() {
+        return dc;
+    }
+
+    /**
+     * @param dc the dc to set
+     */
+    public void setDc(String dc) {
+        this.dc = dc;
+    }
+
+    /**
+     * @return the cif
+     */
+    public String getCif() {
+        return cif;
+    }
+
+    /**
+     * @param cif the cif to set
+     */
+    public void setCif(String cif) {
+        this.cif = cif;
+    }
+
+    /**
+     * @return the saldo
+     */
+    public BigDecimal getSaldo() {
         return saldo;
     }
-    
-    public void setSaldo(BigDecimal saldo){
+
+    /**
+     * @param saldo the saldo to set
+     */
+    public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
+
+    /**
+     * @return the listaMovimiento
+     */
+    public List<MovimientoBancario> getListaMovimiento() {
+        return listaMovimiento;
+    }
+
+    /**
+     * @param listaMovimiento the listaMovimiento to set
+     */
+    public void setListaMovimiento(List<MovimientoBancario> listaMovimiento) {
+        this.listaMovimiento = listaMovimiento;
+    }
+
+   
 }

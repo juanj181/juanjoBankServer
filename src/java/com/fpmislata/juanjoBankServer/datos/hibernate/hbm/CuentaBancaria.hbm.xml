@@ -5,8 +5,12 @@
         <id column="idCuentaBancaria" name="idCuentaBancaria" type="integer">
             <generator class="identity" />
         </id>
-        <property name="nombre" />
-        <property name="codigoCuentaBancaria" />
+        <many-to-one name="sucursalBancaria">
+            <column name="sucursalBancaria"/>
+        </many-to-one> 
+        <property name="numeroCuenta" />
+        <property name="dc" />
         <property name="saldo"/>
+        <property name="cif" />
     </class>
 </hibernate-mapping>
