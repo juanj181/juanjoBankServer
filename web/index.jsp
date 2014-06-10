@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1><a href="http://localhost:8084/JuanjoBank/#/entidadesBancarias/list">Hello World!</a></h1>
     </body>
 </html>

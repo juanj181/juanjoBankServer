@@ -5,7 +5,15 @@
         <id column="idMovimientoBancario" name="idMovimientoBancario" type="integer">
             <generator class="identity" />
         </id>
-        <property name="nombre" />
-        <property name="codigoMovimientoBancario" />
+                <property name="tipoMovimientoBancario">
+         <type name="org.hibernate.type.EnumType">
+                 <param name="enumClass">com.fpmislata.juanjoBankServer.negocio.TipoMovimientoBancario</param>
+                 <param name="type">12</param>
+            </type>
+        </property>
+        <property name="importe" />
+        <property name="fecha" />
+        <property name="saldoTotal" />
+        <property name="concepto" />
     </class>
 </hibernate-mapping>
