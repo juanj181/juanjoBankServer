@@ -15,17 +15,14 @@ import java.util.List;
 public class CuentaBancaria {
 
     private int idCuentaBancaria;
-    private SucursalBancaria sucursalBancaria;
     private String numeroCuenta;
     private String dc;
     private String cif;
     private BigDecimal saldo;
-    private List<MovimientoBancario> listaMovimiento = new ArrayList<>();
 
-    public CuentaBancaria(int idCuentaBancaria,  SucursalBancaria sucursalBancaria, String numeroCuenta, String dc, String cif, BigDecimal saldo) {
+    public CuentaBancaria(int idCuentaBancaria, String numeroCuenta, String dc, String cif, BigDecimal saldo) {
         this.idCuentaBancaria = idCuentaBancaria;
         this.numeroCuenta = numeroCuenta;
-        this.sucursalBancaria = sucursalBancaria;
         this.dc = dc;
         this.cif = cif;
         this.saldo = saldo;
@@ -51,17 +48,6 @@ public class CuentaBancaria {
     /**
      * @return the sucursalBancaria
      */
-    public SucursalBancaria getSucursalBancaria() {
-        return sucursalBancaria;
-    }
-
-    /**
-     * @param sucursalBancaria the sucursalBancaria to set
-     */
-    public void setSucursalBancaria(SucursalBancaria sucursalBancaria) {
-        this.sucursalBancaria = sucursalBancaria;
-    }
-
     /**
      * @return the numeroCuenta
      */
@@ -117,20 +103,7 @@ public class CuentaBancaria {
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
-
     /**
      * @return the listaMovimiento
      */
-    public List<MovimientoBancario> getListaMovimiento() {
-        return listaMovimiento;
-    }
-
-    /**
-     * @param listaMovimiento the listaMovimiento to set
-     */
-    public void setListaMovimiento(List<MovimientoBancario> listaMovimiento) {
-        this.listaMovimiento = listaMovimiento;
-    }
-
-   
 }

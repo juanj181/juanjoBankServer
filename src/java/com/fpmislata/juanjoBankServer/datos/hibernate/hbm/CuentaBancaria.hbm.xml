@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
- <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.fpmislata.juanjoBankServer.negocio.CuentaBancaria" table="CuentaBancaria" >
         <id column="idCuentaBancaria" name="idCuentaBancaria" type="integer">
             <generator class="identity" />
         </id>
-        <many-to-one name="sucursalBancaria">
-            <column name="sucursalBancaria"/>
-        </many-to-one> 
         <property name="numeroCuenta" />
         <property name="dc" />
-        <property name="saldo"/>
         <property name="cif" />
+        <property name="saldo" type="big_decimal"/>
     </class>
 </hibernate-mapping>

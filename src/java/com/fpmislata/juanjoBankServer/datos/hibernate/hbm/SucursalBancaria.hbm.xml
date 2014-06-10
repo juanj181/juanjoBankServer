@@ -5,7 +5,7 @@
         <id column="idSucursalBancaria" name="idSucursalBancaria" type="integer">
             <generator class="identity" />
         </id>
-        <property name="nombre" />
-        <property name="codigoSucursalBancaria" />
+        <property name="codigoSucursalBancaria"  />
+        <property name="nombreSucursalBancaria" />
     </class>
 </hibernate-mapping>

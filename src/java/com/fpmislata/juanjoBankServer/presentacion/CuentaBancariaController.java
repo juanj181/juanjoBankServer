@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class CuentaBancariaController {
 
-    @RequestMapping(value = {"/CuentaBancaria/{idCuentaBancaria}"}, method = RequestMethod.GET, consumes = "application/json")
+    @RequestMapping(value = {"/CuentaBancaria/{idCuentaBancaria}"}, method = RequestMethod.GET)
     public void get(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @PathVariable("idCuentaBancaria") int idCuentaBancaria) {
         try {
             CuentaBancariaDAO cuentaBancariaDAO = new CuentaBancariaDAOImplHibernate();
@@ -72,7 +73,7 @@ public class CuentaBancariaController {
             try {
                 ex.printStackTrace(httpServletResponse.getWriter());
             } catch (Exception ex1) {
-                Logger.getLogger(EntidadBancariaController.class.getName()).log(Level.SEVERE, null, ex1);
+                Logger.getLogger(CuentaBancariaController.class.getName()).log(Level.SEVERE, null, ex1);
             }
             httpServletResponse.setContentType("text/plain; charset=UTF-8");
             httpServletResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -117,7 +118,7 @@ public class CuentaBancariaController {
             ObjectMapper objectMapper = new ObjectMapper();
             CuentaBancaria cuentaBancariaUpdate = (CuentaBancaria) objectMapper.readValue(jsonEntrada, CuentaBancaria.class);
 
-            cuentaBancariaLeida.setSucursalBancaria(cuentaBancariaUpdate.getSucursalBancaria());
+
             cuentaBancariaLeida.setNumeroCuenta(cuentaBancariaUpdate.getNumeroCuenta());
             cuentaBancariaLeida.setDc(cuentaBancariaUpdate.getDc());
             cuentaBancariaLeida.setSaldo(cuentaBancariaUpdate.getSaldo());

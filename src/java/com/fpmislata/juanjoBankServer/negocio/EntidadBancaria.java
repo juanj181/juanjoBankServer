@@ -9,23 +9,21 @@ package com.fpmislata.juanjoBankServer.negocio;
  * @author profesor
  */
 public class EntidadBancaria {
-    
+
     private int idEntidadBancaria;
     private String nombre;
     private String codigoEntidadBancaria;
     private TipoEntidadBancaria tipoEntidadBancaria;
-    
-    
-   public EntidadBancaria(int idEntidadBancaria, String nombre, String codigoEntidadBancaria, TipoEntidadBancaria tipoEntidadBancaria){
-   this.idEntidadBancaria = idEntidadBancaria;
-   this.nombre = nombre;
-   this.codigoEntidadBancaria = codigoEntidadBancaria;
-   this.tipoEntidadBancaria = tipoEntidadBancaria;
+
+    public EntidadBancaria(int idEntidadBancaria, String nombre, String codigoEntidadBancaria, TipoEntidadBancaria tipoEntidadBancaria) {
+        this.idEntidadBancaria = idEntidadBancaria;
+        this.nombre = nombre;
+        this.codigoEntidadBancaria = codigoEntidadBancaria;
+        this.tipoEntidadBancaria = tipoEntidadBancaria;
     }
-   
-   public EntidadBancaria(){
-   
-   }
+
+    public EntidadBancaria() {
+    }
 
     /**
      * @return the idEntidadBancaria
@@ -82,6 +80,4 @@ public class EntidadBancaria {
     public void setTipoEntidadBancaria(TipoEntidadBancaria tipoEntidadBancaria) {
         this.tipoEntidadBancaria = tipoEntidadBancaria;
     }
-    
-    
 }

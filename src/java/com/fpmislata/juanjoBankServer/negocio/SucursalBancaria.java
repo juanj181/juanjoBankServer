@@ -4,6 +4,9 @@
  */
 package com.fpmislata.juanjoBankServer.negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Jj
@@ -11,13 +14,18 @@ package com.fpmislata.juanjoBankServer.negocio;
 public class SucursalBancaria {
 
     private int idSucursalBancaria;
-    private String nombre;
     private String codigoSucursalBancaria;
+    private String nombreSucursalBancaria;
 
-    public SucursalBancaria(int idSucursalBancaria, String nombre, String codigoSucursalBancaria) {
+    public SucursalBancaria(int idSucursalBancaria, String codigoSucursalBancaria, String nombreSucursalBancaria) {
         this.idSucursalBancaria = idSucursalBancaria;
-        this.nombre = nombre;
         this.codigoSucursalBancaria = codigoSucursalBancaria;
+        this.nombreSucursalBancaria = nombreSucursalBancaria;
+
+    }
+
+    public SucursalBancaria() {
+        //this.cuentasBancarias = new ArrayList<>();
     }
 
     /**
@@ -35,20 +43,6 @@ public class SucursalBancaria {
     }
 
     /**
-     * @return the nombre
-     */
-    public String getNombre() {
-        return nombre;
-    }
-
-    /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    /**
      * @return the codigoSucursalBancaria
      */
     public String getCodigoSucursalBancaria() {
@@ -61,4 +55,21 @@ public class SucursalBancaria {
     public void setCodigoSucursalBancaria(String codigoSucursalBancaria) {
         this.codigoSucursalBancaria = codigoSucursalBancaria;
     }
+
+    /**
+     * @return the nombreSucursalBancaria
+     */
+    public String getNombreSucursalBancaria() {
+        return nombreSucursalBancaria;
+    }
+
+    /**
+     * @param nombreSucursalBancaria the nombreSucursalBancaria to set
+     */
+    public void setNombreSucursalBancaria(String nombreSucursalBancaria) {
+        this.nombreSucursalBancaria = nombreSucursalBancaria;
+    }
+    /**
+     * @return the entidadBancaria
+     */
 }
